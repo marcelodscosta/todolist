@@ -1,5 +1,6 @@
 package com.marcelodscosta.todolist.user;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -19,6 +20,8 @@ public class UserModel {
     private UUID id;
 
     private String name;
+
+    @Column(unique = true) //Validação de usuário, somente 1 usuário com este username
     private String username;
     private String password;
 
