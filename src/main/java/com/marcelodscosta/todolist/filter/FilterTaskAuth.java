@@ -16,13 +16,13 @@ public class FilterTaskAuth extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         // Pegar autenticação
-        var authorization = request.getHeader("Authorization");
-        var authEncoded = authorization.substring("Basic".length()).trim();
+        var authorization = request.getHeader("Authorization"); // Pegando usuário e senha do Header de forma bruta
+        var authEncoded = authorization.substring("Basic".length()).trim(); // Tratando informação e removendo espaços
 
-        byte[] decodedAuth = Base64.getDecoder().decode(authEncoded);
+        byte[] decodedAuth = Base64.getDecoder().decode(authEncoded); // Decodificando
 
-        String auth = new String(decodedAuth);
-        String[] authSplit = auth.split(":");
+        String auth = new String(decodedAuth); // Convertendo em String
+        String[] authSplit = auth.split(":"); // Separando informação
 
 
         System.out.printf("Usuário: %s%n", authSplit[0]);
