@@ -40,6 +40,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
 
             // Validar Usuário
 
+
             var user = this.userRepository.findByUsername(username);
             if (user == null) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
